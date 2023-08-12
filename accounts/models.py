@@ -90,27 +90,22 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.user_id
-
     # 이 메서드는 객체를 문자열로 변환했을 때 표시되는 값을 정의합니다. self.user_id를 통해 해당 객체의 user_id를 반환하도록 설정
 
     def is_staff(self):
         return self.staff
-
     # 사용자의 staff 속성 값을 반환하므로, 사용자가 스태프 권한을 가지면 True를 반환하고, 그렇지 않으면 False를 반환
 
     def is_superuser(self):
         return self.admin
-
     # 이 메서드는 사용자가 최고 관리자(admin) 인지 확인
 
     def has_perm(self, perm, obj=None):
         return self.admin
-
     # 이 메서드는 사용자가 주어진 권한(perm)을 가지고 있는지 확인
 
     def has_module_perms(self, app_label):
         return self.admin
-
     # 이 메서드는 사용자가 주어진 앱(app_label)에 대한 권한을 가지고 있는지 확인합니다.
 
 

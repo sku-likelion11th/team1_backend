@@ -11,7 +11,7 @@
     />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="../css/signin.css" />
     <title>MYMY</title>
   </head>
@@ -37,7 +37,11 @@
             </div>
 
             <!-- <form action="" method="POST"> -->
-            <div class="input-box">
+            
+              {% csrf_token %}
+              {{form.as_p}}
+              
+            <!-- <div class="input-box">
               <input
                 id="username"
                 type="text"
@@ -74,7 +78,7 @@
               >
                 회원가입
               </button>
-            </div>
+            </div> -->
             <!-- </form> -->
           </section>
         </div>
