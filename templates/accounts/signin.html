@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +12,8 @@
     />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="../css/signin.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}" />
     <title>MYMY</title>
   </head>
   <body>
@@ -27,7 +28,7 @@
               </div>
               <div class="heart_json">
                 <lottie-player
-                  src="./js/json/animation_heart.json"
+                  src="{% static 'js/json/animation_heart.json' %}"
                   background="transparent"
                   speed="0.6"
                   loop
