@@ -1,0 +1,103 @@
+.display-container {
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.bookcover {
+  background-color: #b4d1da;
+  border-radius: 9px;
+  border: 1px solid #86737d;
+  width: 1300px;
+  height: 750px;
+  margin: 25px auto;
+  position: relative;
+}
+
+.bookdot {
+  border-radius: 9px;
+  border: 2px dashed #ffffff;
+  padding: 15px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.window img:nth-child(1) {
+  width: 364px;
+  position: absolute;
+  top: 190px;
+  left: 199px;
+}
+.window img:nth-child(2) {
+  width: 364px;
+  position: absolute;
+  top: 190px;
+  left: 199px;
+}
+
+.radio img {
+  width: 300px;
+  position: relative;
+  top: 44px;
+  left: 662px;
+  z-index: 1;
+}
+.shelf img {
+  width: 386px;
+  position: absolute;
+  top: 329px;
+  left: 619px;
+}
+.title {
+  background-color: white;
+  width: 1235px;
+  height: 144px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.main-title {
+  position: relative;
+  font-size: 60px;
+  color: #a0c49d;
+  text-shadow: 3px 2px 2px gray;
+}
+.sub-tile {
+  font-size: 24px;
+  color: #a0c49d;
+}
+
+.bttn {
+  text-decoration: none;
+  width: 309px;
+  border: 4px solid #c86b6b;
+  font-size: 26px;
+  color: #c86b6b;
+}
+
+p {
+  color: white;
+}
+button {
+  font-size: 20px;
+  border: 5px solid rgb(61, 61, 61);
+  border-radius: 30px;
+  height: 70px;
+  position: relative;
+  left: 645px;
+  top: 232px;
+  background-color: #ffffff;
+}
+.area2 {
+  background-color: white;
+  width: 1235px;
+  height: 521px;
+  border-radius: 10px;
+}
+
+.voice_json {
+  position: absolute;
+  left: 652px;
+  bottom: 158px;
+}
