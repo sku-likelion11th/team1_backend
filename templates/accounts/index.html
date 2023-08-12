@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +11,8 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <title>MYMY</title>
   </head>
   <body>
@@ -25,16 +26,16 @@
             </div>
           </div>
           <div class="window">
-            <img src="../source/img/window.png" class="z-1" />
-            <img src="../source/img/bg_afternoon.png" />
+            <img src="{% static 'source/img/window.png' %}" class="z-1" />
+            <img src="{% static 'source/img/bg_afternoon.png' %}" />
           </div>
 
           <div class="area2">
             <div class="radio z-1">
-              <img src="../source/img/radio.png" />
+              <img src="{% static 'source/img/radio.png' %}" />
             </div>
             <div class="shelf">
-              <img src="../source/img/shelf.png" class="shelf" />
+              <img src="{% static 'source/img/shelf.png' %}" class="shelf" />
             </div>
 
             <button
@@ -49,7 +50,7 @@
             </button>
             <div class="voice_json">
               <lottie-player
-                src="../js/json/animation_beat.json"
+                src="{% static 'js/json/animation_beat.json' %}"
                 background="transparent"
                 speed="1"
                 style="width: 300px"
