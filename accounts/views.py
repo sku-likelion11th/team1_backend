@@ -25,7 +25,10 @@ def signup(request):
         if form.is_valid():
             form.save()
             return redirect("signin")
-    return render(request, "signup.html", {"form": form})
+
+    else:
+        form = SignUpForm()
+    return render(request, "accounts/signup.html", {"form": form})
 
 
 def signin(request):
@@ -43,7 +46,7 @@ def signin(request):
             else:
                 messages.error(request, "Invalid username or password")
 
-    return render(request, "signin.html", {"form": form})
+    return render(request, "accounts/signin.html", {"form": form})
 
 
 # User 모델에 대한 post_save 수신기 작성
