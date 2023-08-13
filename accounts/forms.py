@@ -7,7 +7,7 @@ from .models import User, Comment
 class SignUpForm(UserCreationForm):
     # SignUpForm 를 생성합니다.
 
-    user_id = forms.CharField(max_length=20, help_text="ID를 입력하세요.")
+    username = forms.CharField(max_length=20, help_text="ID를 입력하세요.")
     # CharField는 문자열 데이터처리를 위한 입력 필드 형식, 최대길이 20자 설정, 도움말 텍스트는 양식의 입력 필드
 
     nickname = forms.CharField(max_length=20, help_text="Please enter your NickName")
@@ -31,19 +31,17 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["user_id", "nickname", "password1", "password2"]
+        fields = ["username", "nickname", "password1", "password2"]
 
 
 class SignInForm(AuthenticationForm):
-    class Meta:
-        model = User
-        fields = ["user_id", "password"]
+    pass
         
 
 # class CustomUserCreationForm(UserCreationForm):
 #     class Meta:
 #         model = User
-#         fields = ('user_id', 'nickname', 'password1', 'password2')
+#         fields = ('username', 'nickname', 'password1', 'password2')
 
 # class CommentForm(forms.ModelForm):
 #     class Meta:

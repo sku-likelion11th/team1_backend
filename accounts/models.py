@@ -4,11 +4,11 @@ from django.db import models
 
 # UserManager의 create_user를 오버라이딩 해서 사용
 class UserManager(BaseUserManager):
-    def create_user(self, user_id, password, nickname, staff=False, admin=False, active=True):
-        # user_id, password, nickname을 필드로 가지는 UserManager상속
-        if not user_id:
+    def create_user(self, username, password, nickname, staff=False, admin=False, active=True):
+        # username, password, nickname을 필드로 가지는 UserManager상속
+        if not username:
             raise ValueError("id를 입력해주세요")
-            # user_id가 (None, 빈 문자열 등)을 확인합니다,만약 user_id가 비어있을때에 예외를 발생시키고, id를 입력해주세요 라는 메시지 전달
+            # username가 (None, 빈 문자열 등)을 확인합니다,만약 username가 비어있을때에 예외를 발생시키고, id를 입력해주세요 라는 메시지 전달
         if not password:
             raise ValueError("pw를 입력해주세요")
             # password가 (None, 빈 문자열 등)을 확인하고,만약 password가 비어있을때에 예외를 발생시키고, pw를 입력해주세요 라는 메시지 전달
@@ -17,7 +17,7 @@ class UserManager(BaseUserManager):
             # (None, 빈 문자열 등)을 확인하고,만약 nickname가 비어있을때에 예외를 발생시키고, 닉네임을 입력하세요 라는 메시지 전달
             # if문 -> 유효성 검사
 
-        self.user = self.model(user_id=user_id, nickname=nickname)
+        self.user = self.model(username=username, nickname=nickname)
         # user객체를 생성하는 코드
 
         self.user.set_password(password)
@@ -37,13 +37,13 @@ class UserManager(BaseUserManager):
 
         return self.user
 
-    def create_superuser(self, user_id, password):
+    def create_superuser(self, username, password):
         # UserManager 클래서에서 슈퍼유저를 생성
 
         user = self.create_user(
             # create_user메서드를 호출하여 새로운 객체를 생성
             # staff, admin을 True를 주면서 슈퍼유저를 생성
-            user_id,
+            username,
             password,
             staff=True,
             admin=True,
@@ -54,7 +54,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    user_id = models.CharField(max_length=150, primary_key=True, verbose_name="사용자 아이디")
+    username = models.CharField(max_length=150, primary_key=True, verbose_name="사용자 아이디")
     # 문자열을 가진 데이터를 저장, 최대 길이 150, 기본키 설정
 
     password = models.CharField(max_length=20, blank=False, verbose_name="비밀번호")
@@ -77,8 +77,8 @@ class User(AbstractBaseUser):
     # post_number = models.AutoField(default=0, primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    USERNAME_FIELD = "user_id"
-    # USERNAME_FIELD 속성은 사용자 이름으로 사용할 필드를 지정합니다. 여기에서는 user_id를 사용자 이름으로 설정
+    USERNAME_FIELD = "username"
+    # USERNAME_FIELD 속성은 사용자 이름으로 사용할 필드를 지정합니다. 여기에서는 username를 사용자 이름으로 설정
 
     REQUIRED_FIELDS = []
     # 사용자 객체를 생성할 때 필수로 입력해야하는 필드
@@ -87,8 +87,8 @@ class User(AbstractBaseUser):
     # UserManager 클래스의 인스턴스를 생성하고 이를 objects 속성에 할당
 
     def __str__(self):
-        return self.user_id
-    # 이 메서드는 객체를 문자열로 변환했을 때 표시되는 값을 정의합니다. self.user_id를 통해 해당 객체의 user_id를 반환하도록 설정
+        return self.username
+    # 이 메서드는 객체를 문자열로 변환했을 때 표시되는 값을 정의합니다. self.username를 통해 해당 객체의 username를 반환하도록 설정
 
     def is_staff(self):
         return self.staff

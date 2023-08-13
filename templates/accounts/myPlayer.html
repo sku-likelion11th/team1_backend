@@ -41,9 +41,9 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/myPlayer.css" />
-    <link rel="stylesheet" href="../css/help.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/myPlayer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/help.css' %}" />
 
     <title>MYMY</title>
   </head>
@@ -55,7 +55,7 @@
           <div class="content-container">
             <div class="header content-title">
               <div class="content-title-name font-NeoDunggeunmo">
-                {{ nickname }}이의 플레이어
+                {{ user.nickname }}이의 플레이어
               </div>
               <!-- help -->
               <div class="help">
@@ -64,13 +64,17 @@
                   <span>
                     <img
                       class="icon"
-                      src="../source/img/question-icon.png"
+                      src="{% static 'source/img/question-icon.png' %}"
                     />&nbsp;</span
                   >
                 </label>
                 <div class="background">&nbsp;</div>
                 <nav class="nav display-container">
-                  <img class="helpTv" src="../source/img/TV.png" alt="TV" />
+                  <img
+                    class="helpTv"
+                    src="{% static 'source/img/TV.png' %}"
+                    alt="TV"
+                  />
                 </nav>
               </div>
 
@@ -115,52 +119,70 @@
             >
               <div class="tape-shelf">
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
               </div>
               <div class="tape-shelf">
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
               </div>
               <div class="tape-shelf">
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
 
                 <div class="tape">
-                  <img src="../source/img/tape.png" class="modal-on" />
+                  <img
+                    src="{% static 'source/img/tape.png' %}"
+                    class="modal-on"
+                  />
                 </div>
                 <div class="shelf">
-                  <img src="../source/img/shelf.png" />
+                  <img src="{% static 'source/img/shelf.png' %}" />
                 </div>
               </div>
             </section>
 
             <hr />
             <div class="open-radio z-3 d-flex justify-content-center">
-              <img src="../source/img/open-radio.png" />
+              <img src="{% static 'source/img/open-radio.png' %}" />
             </div>
           </div>
         </div>
@@ -178,14 +200,14 @@
             <div class="radio">
               <div class="musicNote">
                 <lottie-player
-                  src="./js/json/animation_volume.json"
+                  src="{% static 'js/json/animation_volume.json' %}"
                   background="transparent"
                   speed="1"
                   loop
                   autoplay
                 ></lottie-player>
               </div>
-              <img src="./source/img/radio.png" />
+              <img src="{% static 'source/img/radio.png' %}" />
             </div>
             <div class="info d-flex flex-column align-items-center">
               <div class="info-title">제목: {{ radio_title }}</div>
@@ -243,10 +265,10 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/page.js"></script>
-    <script src="./js/calendar.js"></script>
-    <script src="./js/tts.js"></script>
-    <script src="./js/animation_sharebutton.js"></script>
-    <script src="./js/modal.js"></script>
+    <script src="{% static 'js/page.js' %}"></script>
+    <script src="{% static 'js/calendar.js' %}"></script>
+    <script src="{% static 'js/tts.js' %}"></script>
+    <script src="{% static 'js/animation_sharebutton.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
   </body>
 </html>

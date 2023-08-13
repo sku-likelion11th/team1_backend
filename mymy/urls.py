@@ -22,5 +22,6 @@ path("admin/", admin.site.urls),
 path("signup/", views.signup, name="signup"),
 path("signin/", views.signin, name="signin"),
 path("", views.home, name="home"),
+path("myPlayer/", views.myplayer_view, name="myPlayer_view"),
 # path('logout/', views.signout, name='logout'),
 ]

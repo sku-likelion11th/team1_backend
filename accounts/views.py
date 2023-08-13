@@ -8,12 +8,14 @@ from django.views.generic import ListView
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 
-# from .models import User, Post, Comment
 
 
 def home(request):
     return render(request, "accounts/index.html")
+
 
 def signup(request):
     if request.method == "GET":
@@ -30,21 +32,33 @@ def signup(request):
 
 
 def signin(request):
-    if request.method == "GET":
-        form = SignInForm()
-    elif request.method == "POST":
-        form = SignInForm(request, data=request.POST)
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            user_id = form.cleaned_data.get("user_id")
+            username = form.cleaned_data.get("username")  # 사용자 입력 필드 이름에 맞게 변경
             password = form.cleaned_data.get("password")
-            user = authenticate(request, user_id=user_id, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("myPlayer")
+                return redirect("myPlayer_view")
             else:
-                messages.error(request, "Invalid username or password")
+                messages.error(request, "Invalid user ID or password")
+                print("Authentication failed")
 
-    return render(request, "accounts/signin.html", {"form": form})
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "accounts/index.html", {"form": form})
+
+
+@login_required  # 로그인 상태를 확인하는 데코레이터
+def myplayer_view(request):
+    # 이 뷰 함수에서 원하는 로직을 추가하세요.
+    # 사용자가 로그인된 상태이므로 로직을 작성할 수 있습니다.
+    # 예: 특정 정보를 불러와서 템플릿에 전달하거나, 다른 작업을 수행하십시오.
+
+    return render(request, "accounts/myPlayer.html")
+
 
 
 # User 모델에 대한 post_save 수신기 작성
