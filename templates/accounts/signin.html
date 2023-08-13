@@ -36,12 +36,8 @@
                 ></lottie-player>
               </div>
             </div>
-
+            {% csrf_token %} {{form.as_p}}
             <!-- <form action="" method="POST"> -->
-            
-              {% csrf_token %}
-              {{form.as_p}}
-              
             <!-- <div class="input-box">
               <input
                 id="username"
