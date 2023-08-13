@@ -4,9 +4,7 @@ from django.db import models
 
 # UserManager의 create_user를 오버라이딩 해서 사용
 class UserManager(BaseUserManager):
-    def create_user(
-        self, user_id, password, nickname, staff=False, admin=False, active=True
-    ):
+    def create_user(self, user_id, password, nickname, staff=False, admin=False, active=True):
         # user_id, password, nickname을 필드로 가지는 UserManager상속
         if not user_id:
             raise ValueError("id를 입력해주세요")

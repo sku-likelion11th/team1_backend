@@ -15,7 +15,6 @@ from django.contrib import messages
 def home(request):
     return render(request, "accounts/index.html")
 
-
 def signup(request):
     if request.method == "GET":
         form = SignUpForm()
@@ -25,7 +24,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             return redirect("signin")
-    return render(request, "signup.html", {"form": form})
+    return render(request, "accounts/signup.html", {"form": form})
 
 
 def signin(request):
@@ -34,7 +33,7 @@ def signin(request):
     elif request.method == "POST":
         form = SignInForm(request, data=request.POST)
         if form.is_valid():
-            user_id = form.cleaned_data.get("username")
+            user_id = form.cleaned_data.get("user_id")
             password = form.cleaned_data.get("password")
             user = authenticate(request, user_id=user_id, password=password)
             if user is not None:
@@ -43,7 +42,7 @@ def signin(request):
             else:
                 messages.error(request, "Invalid username or password")
 
-    return render(request, "signin.html", {"form": form})
+    return render(request, "accounts/index.html", {"form": form})
 
 
 # User 모델에 대한 post_save 수신기 작성
