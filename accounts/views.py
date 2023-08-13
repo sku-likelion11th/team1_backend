@@ -44,7 +44,7 @@ def signin(request):
             else:
                 messages.error(request, "Invalid username or password")
 
-    return render(request, "accounts/index.html", {"form": form})
+    return render(request, "accounts/signin.html", {"form": form})
 
 
 # User 모델에 대한 post_save 수신기 작성
