@@ -59,6 +59,14 @@ def myplayer_view(request):
 
     return render(request, "accounts/myPlayer.html")
 
+def noneplayer_view(request):
+    return render(request, "accounts/nonePlayer.html")
+    # 불특정 다수 페이지
+    
+def writing_view(request):
+    return render(request, "accounts/writing.html")
+    #불특정 다수가 테이프 만들기 버튼 눌렀을 때
+
 
 
 # User 모델에 대한 post_save 수신기 작성

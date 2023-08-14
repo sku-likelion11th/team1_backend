@@ -10,9 +10,9 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/nonePlayer.css" />
-    <link rel="stylesheet" href="../css/help.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/myPlayer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/help.css' %}" />
     <title>MYMY</title>
   </head>
   <body>
@@ -95,10 +95,10 @@
             <div
               class="bttn d-flex justify-content-center z-3 font-NeoDunggeunmo"
             >
-              <button onclick="location.href='signup.html'" class="bttn">
+              <button onclick="location.href='/writing'" class="bttn">
                 테이프 만들기
               </button>
-              <button onclick="location.href='#.html'" class="bttn">
+              <button onclick="location.href='/signin'" class="bttn">
                 게시판 만들기
               </button>
             </div>

@@ -24,4 +24,7 @@ path("signin/", views.signin, name="signin"),
 path("", views.home, name="home"),
 path("myPlayer/", views.myplayer_view, name="myPlayer_view"),
 # path('logout/', views.signout, name='logout'),
+path("nonePlayer/", views.noneplayer_view, name="nonePlayer_view"),
+path("writing/", views.writing_view, name="writing_view"),
+
 ]
