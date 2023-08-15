@@ -109,7 +109,7 @@ class User(AbstractBaseUser):
 
 class Post(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="posts"
+        User, on_delete=models.CASCADE, related_name="posts", null=True, blank=True
     )
     title = models.CharField(max_length=100)
     content = models.TextField()

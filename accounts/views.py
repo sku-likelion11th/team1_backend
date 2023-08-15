@@ -5,6 +5,7 @@ from django.views import generic
 from django.views.generic import ListView
 from django.dispatch import receiver
 from django.contrib import messages
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignInForm, SignUpForm
@@ -50,6 +51,19 @@ def signin(request):
     return render(request, "accounts/index.html", {"form": form})
 
 
+def create_post(request):
+    post=Post()
+    if request.method == 'POST':
+        post.title = request.POST['title']
+        post.content = request.POST['content'] 
+        post.created_at = datetime.now()       
+        post.save()
+        return redirect('/post/')
+    return render(request, "accounts/writing.html")
+
+
+
+
 @login_required  # 로그인 상태를 확인하는 데코레이터
 def myplayer_view(request, username):
     user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
@@ -60,7 +74,3 @@ def noneplayer_view(request):
     return render(request, "accounts/nonePlayer.html")
     # 불특정 다수 페이지
     
-def writing_view(request):
-    return render(request, "accounts/writing.html")
-    #불특정 다수가 테이프 만들기 버튼 눌렀을 때
-

@@ -36,14 +36,15 @@ class SignUpForm(UserCreationForm):
 
 class SignInForm(AuthenticationForm):
     pass
-        
+    
+
 
 # class CustomUserCreationForm(UserCreationForm):
 #     class Meta:
 #         model = User
 #         fields = ('username', 'nickname', 'password1', 'password2')
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment
-#         fields = ('content')
+class PostForm(forms.ModelForm):
+    class Meta:
+      model = Post
+      fields = ('title','content')
