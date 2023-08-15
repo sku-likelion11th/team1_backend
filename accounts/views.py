@@ -52,9 +52,9 @@ def create_post(request):
     if request.method == 'POST':
         post.title = request.POST['title']
         post.content = request.POST['content'] 
-        post.created_at = datetime.now()       
+        post.created_at = datetime.now()
         post.save()
-        return redirect('/post/')
+        return redirect('/nonePlayer/')
     return render(request, "accounts/writing.html")
 
 
@@ -70,4 +70,3 @@ def myplayer_view(request, username):
 def noneplayer_view(request):
     return render(request, "accounts/nonePlayer.html")
     # 불특정 다수 페이지
-    
