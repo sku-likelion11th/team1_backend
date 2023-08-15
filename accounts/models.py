@@ -107,10 +107,13 @@ class User(AbstractBaseUser):
     # 이 메서드는 사용자가 주어진 앱(app_label)에 대한 권한을 가지고 있는지 확인합니다.
 
 
-class Comment(models.Model):
-    comment_number = models.AutoField(primary_key=True)
-    post_number = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="comments", verbose_name="작성자"
+class Post(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="posts"
     )
-    content = models.TextField(verbose_name="내용")
+    title = models.CharField(max_length=100)
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s Post: {self.title}"
