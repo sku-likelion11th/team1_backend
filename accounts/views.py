@@ -1,9 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
-from django.http import HttpResponse, HttpResponseRedirect
-from django.views import generic
-from django.views.generic import ListView
-from django.dispatch import receiver
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
@@ -69,6 +65,7 @@ def myplayer_view(request, username):
     user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
     posts = Post.objects.filter(user=user)
     return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
+
 
 def noneplayer_view(request):
     return render(request, "accounts/nonePlayer.html")
