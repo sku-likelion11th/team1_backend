@@ -13,6 +13,6 @@ urlpatterns = [
     path('myPlayer/<username>/', views.myplayer_view, name='myplayer_view'),
 
     #post 관련 url정리 
-    path("nonePlayer/", views.noneplayer_view, name="nonePlayer_view"),
+    path("nonePlayer/<username>/", views.noneplayer_view, name="nonePlayer_view"),
     path('create_post/',views.create_post,name="create_post"),
 ]

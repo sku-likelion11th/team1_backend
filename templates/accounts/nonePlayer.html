@@ -23,7 +23,7 @@
           <div class="content-container">
             <div class="header content-title">
               <div class="content-title-name font-NeoDunggeunmo">
-                (User name)이의 플레이어
+                {{ User name }}이의 플레이어
               </div>
               <!-- help -->
               <div class="help">
@@ -38,7 +38,11 @@
                 </label>
                 <div class="background">&nbsp;</div>
                 <nav class="nav display-container">
-                  <img class="helpTv" src="{% static 'source/img/TV.png' %}" alt="TV" />
+                  <img
+                    class="helpTv"
+                    src="{% static 'source/img/TV.png' %}"
+                    alt="TV"
+                  />
                 </nav>
               </div>
             </div>
@@ -90,7 +94,7 @@
                 </div>
               </div>
             </section>
-            <hr/>
+            <hr />
 
             <div
               class="bttn d-flex justify-content-center z-3 font-NeoDunggeunmo"

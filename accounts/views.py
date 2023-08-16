@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignInForm, SignUpForm
 from .models import User, Post
+from django.utils import timezone
 
 
 
@@ -48,15 +49,22 @@ def signin(request):
 
 
 def create_post(request):
-    post=Post()
     if request.method == 'POST':
+        post = Post()
         post.title = request.POST['title']
-        post.content = request.POST['content'] 
+        post.content = request.POST['content']
         post.created_at = datetime.now()
+
+        if request.user.is_authenticated:
+            post.user = request.user
+        else:
+            # 익명 사용자의 경우 user 필드에 None을 할당합니다.
+            anonymous_user = User.objects.get(username='anonymous_user')
+            post.user = None
+
         post.save()
         return redirect('/nonePlayer/')
     return render(request, "accounts/writing.html")
-
 
 
 
@@ -67,6 +75,14 @@ def myplayer_view(request, username):
     return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
 
 
-def noneplayer_view(request):
-    return render(request, "accounts/nonePlayer.html")
-    # 불특정 다수 페이지
+def noneplayer_view(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        # 사용자가 존재하지 않으면 처리할 내용
+        pass
+
+    context = {
+        'username': user.username if user else None  # 사용자 이름 전달
+    }
+    return render(request, 'nonePlayer.html', context)
