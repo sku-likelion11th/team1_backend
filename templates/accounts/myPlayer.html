@@ -1,102 +1,108 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
-  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script
-      type="text/javascript"
-      src="/___vscode_livepreview_injected_script"
-    ></script>
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.ko.min.js"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/myPlayer.css' %}" />
     <link rel="stylesheet" href="{% static 'css/help.css' %}" />
-
+    <link rel="stylesheet" href="{% static 'css/button2.css' %}" />
     <title>MYMY</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'source/favicon_io/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'source/favicon_io/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'source/favicon_io/favicon-16x16.png' %}"
+    />
+    <link
+      rel="manifest"
+      href="{% static 'source/favicon_io/site.webmanifest' %}"
+    />
   </head>
   <body>
     <!-- page -->
+
     <div class="bookcover">
       <div class="bookdot">
         <div class="page">
-          <div class="content-container">
-            <div class="header content-title">
-              <div class="content-title-name font-NeoDunggeunmo">
-                {{ user.nickname }}이의 플레이어
+          <div class="container">
+            <div class="radio_bttn">
+              <img src="{% static 'source/img/radio_bttn.png' %}" />
+              <img src="{% static 'source/img/radio_bttn.png' %}" />
+              <img src="{% static 'source/img/radio_rad_bttn.png' %}" />
+            </div>
+            <div class="radio-bg row">
+              <div class="col-4">
+                <img
+                  src="{% static 'source/img/radio_shadow.png' %}"
+                  class="top-radio"
+                />
+                <img src="{% static 'source/img/radio_shadow.png' %}" />
               </div>
-              <!-- help -->
-              <div class="help">
-                <input type="checkbox" id="navi-toggle" class="checkbox" />
-                <label for="navi-toggle" class="button">
-                  <span>
-                    <img
-                      class="icon"
-                      src="{% static 'source/img/question-icon.png' %}"
-                    />&nbsp;</span
-                  >
-                </label>
-                <div class="background">&nbsp;</div>
-                <nav class="nav display-container">
+              <div class="col-4">
+                <img
+                  src="{% static 'source/img/radio_shadow.png' %}"
+                  class="top-radio"
+                />
+                <img src="{% static 'source/img/radio_shadow.png' %}" />
+              </div>
+              <div class="col-4">
+                <img
+                  src="{% static 'source/img/radio_shadow.png' %}"
+                  class="top-radio"
+                />
+                <img src="{% static 'source/img/radio_shadow.png' %}" />
+              </div>
+            </div>
+            <!-- nav -->
+            <div class="help d-flex justify-content-end font-NeoDunggeunmo">
+              <button
+                onclick="location.href='writing.html'"
+                class="writingBttn custom-btn btn-9"
+              >
+                테이프 생성하기
+              </button>
+              <input type="checkbox" id="navi-toggle" class="checkbox" />
+              <label for="navi-toggle" class="button">
+                <span>
                   <img
-                    class="helpTv"
-                    src="{% static 'source/img/TV.png' %}"
-                    alt="TV"
-                  />
-                </nav>
+                    class="icon"
+                    src="{% static 'source/img/question-icon.png' %}"
+                  />&nbsp;</span
+                >
+              </label>
+              <div class="background">&nbsp;</div>
+              <nav class="nav display-container">
+                <img
+                  class="helpTv"
+                  src="{% static 'source/img/TV.png' %}"
+                  alt="TV"
+                />
+              </nav>
+            </div>
+            <div class="d-flex flex-row">
+              <div class="content-title-name font-NeoDunggeunmo">
+                (User name)이의 플레이어
               </div>
-
-              <!--달력-->
-              <form autocomplete="off">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    id="dp1"
-                    class="datepicker mr-2"
-                    placeholder="Select Date"
-                    name="date"
-                    value="{{ selected_date }}"
-                  />
-                  <button
-                    type="submit"
-                    class="calendar-btn btn-info font-bitbit"
-                  >
-                    결정
-                  </button>
-                </div>
-              </form>
             </div>
             <!--share button-->
             <div class="share-container">
@@ -106,89 +112,121 @@
               <div class="share-options">
                 <p class="title font-bitbit">공유</p>
                 <div class="link-container">
-                  <p class="link font-bitbit">{{ share_link }}</p>
+                  <p class="link font-bitbit">
+                    http://127.0.0.1:3000/test_help.html
+                  </p>
                   <button class="copy-btn font-bitbit" id="toastStart">
-                    <a href="http://127.0.0.1:8000/nonePlayer/" onclick="clip(); return false;">복사</a>
+                    <a href="#" onclick="clip(); return false;">복사</a>
                   </button>
                 </div>
               </div>
             </div>
-            <!-- page -->
-            <section
-              class="tape-shelf-box justify-content-center d-flex text-center"
-            >
-              <div class="tape-shelf">
-                <div class="tape">
-                  <img
-                    src="{% static 'source/img/tape.png' %}"
-                    class="modal-on"
-                  />
-                </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
-                </div>
-                <div class="tape">
-                  <img
-                    src="{% static 'source/img/tape.png' %}"
-                    class="modal-on"
-                  />
-                </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
-                </div>
-              </div>
-              <div class="tape-shelf">
-                <div class="tape">
-                  <img
-                    src="{% static 'source/img/tape.png' %}"
-                    class="modal-on"
-                  />
-                </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
-                </div>
-                <div class="tape">
-                  <img
-                    src="{% static 'source/img/tape.png' %}"
-                    class="modal-on"
-                  />
-                </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
-                </div>
-              </div>
-              <div class="tape-shelf">
-                <div class="tape">
-                  <img
-                    src="{% static 'source/img/tape.png' %}"
-                    class="modal-on"
-                  />
-                </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
-                </div>
 
-                <div class="tape">
+            <div class="list">
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <div class="tape">
+                    <img
+                      src="{% static 'source/img/tape.png'%}"
+                      class="modal-on"
+                    />
+                  </div>
+                </div>
+                <div class="content"></div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
                   <img
-                    src="{% static 'source/img/tape.png' %}"
+                    src="{% static 'source/img/tape2.png'%}"
                     class="modal-on"
                   />
                 </div>
-                <div class="shelf">
-                  <img src="{% static 'source/img/shelf.png' %}" />
+                <div class="content"></div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape3.png' %}"
+                    class="modal-on"
+                  />
                 </div>
               </div>
-            </section>
-
-            <hr />
-            <div class="open-radio z-3 d-flex justify-content-center">
-              <img src="{% static 'source/img/open-radio.png' %}" />
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape4.png' %}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape2.png' %}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape.png'%}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape4.png'%}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape3.png'%} "
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape.png'%}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
+              <!--item-->
+              <div class="item">
+                <div class="img">
+                  <img
+                    src="{% static 'source/img/tape2.png' %}"
+                    class="modal-on"
+                  />
+                </div>
+              </div>
             </div>
+            <ul class="listPage">
+              <li class="active">1</li>
+              <li>2</li>
+              <li>3</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-
     <!-- modal -->
     <div class="modal-overlay" id="modal-overlay">
       <div class="input-box font-NeoDunggeunmo" id="modal">
@@ -210,15 +248,8 @@
               <img src="{% static 'source/img/radio.png' %}" />
             </div>
             <div class="info d-flex flex-column align-items-center">
-              <div class="info-title">제목: {{ radio_title }}</div>
-              <div class="sender">보낸사람 : {{ sender_name }}</div>
-              <!-- <audio controls class="mt-4">
-                <source
-                  src="https://ccrma.stanford.edu/~jos/mp3/harpsi-cs.mp3"
-                  type="audio/mp3"
-                />
-                재생 오류
-              </audio> -->
+              <div class="info-title">제목: 해커톤 MYMY 파이팅!!</div>
+              <div class="sender mt-3">보낸사람 : 박시은</div>
 
               <hr class="hr-modal" />
 
@@ -248,27 +279,19 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.ko.min.js"
-      integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+
+    <script src="{% static 'js/pageNation.js' %}"></script>
     <script src="{% static 'js/page.js' %}"></script>
-    <script src="{% static 'js/calendar.js' %}"></script>
     <script src="{% static 'js/tts.js' %}"></script>
     <script src="{% static 'js/animation_sharebutton.js' %}"></script>
-    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/myPlayerModal.js' %}"></script>
   </body>
 </html>

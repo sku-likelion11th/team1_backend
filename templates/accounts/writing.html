@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<title>테이프 보내기</title>
-	<link rel="stylesheet" href="{% static 'todo/bootstrap/bootstrap.min.css' %}">
-</head>
-<body>
-	<h1>테이프 보내기</h1>
-	<hr/>
-	<form method='post' enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<table>
-			<tbody>
-				<tr>
-					<th><label for="id_todo">제목</label></th>
-					<td><input type="text" name="title" maxlength="30" required="" id="id_todo"></td>
-				</tr>
-				<tr>
-					<th><label for="id_description">내용</label></th>
-					<td><textarea name="content" cols="40" rows="10" required="" id="id_description"></textarea></td>
-				</tr>
-			
-				</tbody>
-			</table>
-			<button type="submit" class="btn btn-primary" style="margin-left: 350px;">Submit</button>
-	</form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>테이프 보내기</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'todo/bootstrap/bootstrap.min.css' %}"
+    />
+  </head>
+  <body>
+    <h1>테이프 보내기</h1>
+    {{ user }}
+    <hr />
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="id_todo">제목</label></th>
+            <td>
+              <input
+                type="text"
+                name="title"
+                maxlength="30"
+                required=""
+                id="id_todo"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th><label for="id_description">내용</label></th>
+            <td>
+              <textarea
+                name="content"
+                cols="40"
+                rows="10"
+                required=""
+                id="id_description"
+              ></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary" style="margin-left: 350px">
+        Submit
+      </button>
+    </form>
+  </body>
 </html>

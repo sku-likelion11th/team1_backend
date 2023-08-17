@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
@@ -48,41 +48,27 @@ def signin(request):
     return render(request, "accounts/index.html", {"form": form})
 
 
-def create_post(request):
+def create_post(request, username):
+    user = get_object_or_404(get_user_model(), username=username)
     if request.method == 'POST':
         post = Post()
         post.title = request.POST['title']
         post.content = request.POST['content']
         post.created_at = datetime.now()
-
-        if request.user.is_authenticated:
-            post.user = request.user
-        else:
-            # 익명 사용자의 경우 user 필드에 None을 할당합니다.
-            anonymous_user = User.objects.get(username='anonymous_user')
-            post.user = None
-
+        post.user = user
         post.save()
-        return redirect('/nonePlayer/')
-    return render(request, "accounts/writing.html")
+        return redirect('/myplayer/')
+    return render(request, "accounts/writing.html", {'user': user.username})
 
 
 
 @login_required  # 로그인 상태를 확인하는 데코레이터
 def myplayer_view(request, username):
-    user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
+    login_user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
+    user = get_object_or_404(get_user_model(), username=username)
     posts = Post.objects.filter(user=user)
-    return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
-
-
-def noneplayer_view(request, username):
-    try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
-        # 사용자가 존재하지 않으면 처리할 내용
-        pass
-
-    context = {
-        'username': user.username if user else None  # 사용자 이름 전달
-    }
-    return render(request, 'nonePlayer.html', context)
+    
+    if user == login_user:
+        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
+    
+    return render(request, "accounts/nonePlayer.html", {"user": user, "posts": posts})

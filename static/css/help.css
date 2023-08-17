@@ -4,12 +4,12 @@
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* 어두운 투명 배경 색상 */
+  background-color: rgba(0, 0, 0, 0.7); /* 어두운 투명 배경 색상 */
 }
 .help {
   position: relative;
-  top: 0;
-  left: 780px;
+  margin-right: -20px;
+  top: 75px;
   z-index: 300;
 }
 .helpTv {
@@ -19,7 +19,7 @@
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
-  width: 40%;
+  width: 860px;
 }
 
 /* help - hamburger */
@@ -44,8 +44,9 @@
   width: 2rem;
   border-radius: 50%;
   position: relative;
-  top: -30px;
-  background-image: radial-gradient(rgb(244, 227, 227), rgb(244, 227, 227));
+  top: 7px;
+  right: 39px;
+  /*background-image: radial-gradient(rgb(244, 227, 227), rgb(244, 227, 227));*/
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
