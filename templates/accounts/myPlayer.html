@@ -101,7 +101,7 @@
             </div>
             <div class="d-flex flex-row">
               <div class="content-title-name font-NeoDunggeunmo">
-                (User name)이의 플레이어
+                {{ user.username }}이의 플레이어
               </div>
             </div>
             <!--share button-->
@@ -113,7 +113,7 @@
                 <p class="title font-bitbit">공유</p>
                 <div class="link-container">
                   <p class="link font-bitbit">
-                    http://127.0.0.1:3000/test_help.html
+                    http://127.0.0.1:3000/user.username
                   </p>
                   <button class="copy-btn font-bitbit" id="toastStart">
                     <a href="#" onclick="clip(); return false;">복사</a>
@@ -247,26 +247,14 @@
               </div>
               <img src="{% static 'source/img/radio.png' %}" />
             </div>
+            {% for post in postlist %}
             <div class="info d-flex flex-column align-items-center">
-              <div class="info-title">제목: 해커톤 MYMY 파이팅!!</div>
-              <div class="sender mt-3">보낸사람 : 박시은</div>
-
+              <div class="info-title">{{post.title}}</div>
               <hr class="hr-modal" />
 
               <div class="sentance mt-3">
                 <p id="ttsText">
-                  김용택 / 달이 떴다고 전화를 주시다니요 <br />달이 떴다고
-                  전화를 주시다니요. 이 밤 너무나 신나고 근사해요. 내 마음에도
-                  생전 처음 보는 환한 달이 떠오르고 산 아래 작은 마을이
-                  그려집니다. 간절한 이 그리움들을 사무쳐오는 이 연정들을 달빛에
-                  실어 당신께 보냅니다. 세상에 강변에 달빛이 곱다고 전화를 다
-                  주시다니요. 흐르는 물 어디쯤 눈부시게 부서지는 소리 문득
-                  들려옵니다.달이 떴다고 전화를 주시다니요. 이 밤 너무나 신나고
-                  근사해요. 내 마음에도 생전 처음 보는 환한 달이 떠오르고 산
-                  아래 작은 마을이 그려집니다. 간절한 이 그리움들을 사무쳐오는
-                  이 연정들을 달빛에 실어 당신께 보냅니다. 세상에 강변에 달빛이
-                  곱다고 전화를 다 주시다니요. 흐르는 물 어디쯤 눈부시게
-                  부서지는 소리 문득 들려옵니다.
+                  {{post.content}}
                 </p>
               </div>
               <div class="btn d-flex justify-content-center">
@@ -275,9 +263,13 @@
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
+    
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>

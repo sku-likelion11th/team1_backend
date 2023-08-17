@@ -11,7 +11,9 @@ tapeImages.forEach((image) => {
 function modalOn() {
   modal.style.display = "flex";
   modalOverlay.style.display = "block";
+  
 }
+
 function modalOff() {
   modalOverlay.style.display = "none";
 }

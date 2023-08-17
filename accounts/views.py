@@ -13,7 +13,6 @@ from django.utils import timezone
 def home(request):
     return render(request, "accounts/index.html")
 
-
 def signup(request):
     if request.method == "GET":
         form = SignUpForm()
@@ -26,7 +25,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, "accounts/signup.html", {"form": form})
-
 
 def signin(request):
     if request.method == "POST":
@@ -41,12 +39,10 @@ def signin(request):
             else:
                 messages.error(request, "Invalid user ID or password")
                 print("Authentication failed")
-
     else:
         form = AuthenticationForm()
 
     return render(request, "accounts/index.html", {"form": form})
-
 
 def create_post(request, username):
     user = get_object_or_404(get_user_model(), username=username)
@@ -60,15 +56,14 @@ def create_post(request, username):
         return redirect('/myplayer/')
     return render(request, "accounts/writing.html", {'user': user.username})
 
-
-
 @login_required  # 로그인 상태를 확인하는 데코레이터
 def myplayer_view(request, username):
     login_user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
     user = get_object_or_404(get_user_model(), username=username)
     posts = Post.objects.filter(user=user)
-    
+    postlist = Post.objects.all()
+
     if user == login_user:
-        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
+        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts, "postlist": postlist})
     
     return render(request, "accounts/nonePlayer.html", {"user": user, "posts": posts})
