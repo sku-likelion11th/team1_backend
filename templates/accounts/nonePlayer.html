@@ -87,12 +87,10 @@
               >
                 테이프 생성하기
               </button>
-              <button
-                onclick="location.href='{% url 'signin'}'"
-                class="writingBttn custom-btn btn-9"
-              >
+              <a href="{% url 'signin' %}" class="writingBttn custom-btn btn-9" style="text-decoration: none;  color:black">
                 로그인 하기
-              </button>
+              </a>
+              
               <input type="checkbox" id="navi-toggle" class="checkbox" />
               <label for="navi-toggle" class="button">
                 <span>

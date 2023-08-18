@@ -11,7 +11,7 @@ urlpatterns = [
     path("signup/", views.signup, name="signup"),
     path("signin/", views.signin, name="signin"),
     path('myPlayer/<username>/', views.myplayer_view, name='myplayer_view'),
-    
+    path('nonePlayer/<username>/', views.myplayer_view, name='noneplayer_view'),
     
     #post 관련 url정리 
     path('writing/<username>/', views.create_post, name="writing"),

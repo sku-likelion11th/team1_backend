@@ -15,12 +15,15 @@ def home(request):
     return render(request, "accounts/index.html")
 
 def signup(request):
+    print("해줘")
     if request.method == "GET":
         form = SignUpForm()
 
     elif request.method == "POST":
         form = SignUpForm(request.POST)
+
         if form.is_valid():
+            print("저장")
             form.save()
             return redirect("signin")
     else:
