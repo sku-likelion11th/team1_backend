@@ -90,11 +90,13 @@ body {
   justify-content: center;
   display: grid;
   grid-template-columns: 300px 300px 300px;
+  grid-template-rows: minmax(300px, auto) minmax(300px, auto);
   column-gap: 20px;
   background-image: url("../source/img/paper_bg.jpg");
   border-radius: 9px;
   border: 1px solid #adadad;
 }
+
 
 .item .img {
   margin-top: 30px;

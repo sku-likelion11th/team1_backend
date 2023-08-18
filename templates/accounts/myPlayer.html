@@ -128,23 +128,22 @@
               </div>
             </div>
 
-            {% for tape_number in tape_numbers %}
+
             <div class="list">
               <!--item-->
+              {% for post in posts %}
               <div class="item">
                   <div class="img">
                       <div class="tape">
-                          <img src="{% static 'source/img/tape' %}{{ tape_number }}.png" class="modal-on" />
+                          <img src="{% static 'source/img/tape' %}0.png" class="modal-on" />
                       </div>
                   </div>
                   <div class="content"></div>
               </div>
-            </div>
-            {% endfor %}
-          <ul class="listPage">
-              {% for page_number in page_numbers %}
-              <li{% if page_number == current_page %} class="active"{% endif %}>{{ page_number }}</li>
               {% endfor %}
+
+            </div>
+          <ul class="listPage">
           </ul>
           </div>
           </div>

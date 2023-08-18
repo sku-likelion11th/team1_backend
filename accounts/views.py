@@ -61,9 +61,8 @@ def myplayer_view(request, username):
     login_user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
     user = get_object_or_404(get_user_model(), username=username)
     posts = Post.objects.filter(user=user)
-    postlist = Post.objects.all()
 
     if user == login_user:
-        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts, "postlist": postlist})
+        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
     
     return render(request, "accounts/nonePlayer.html", {"user": user, "posts": posts})
