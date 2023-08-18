@@ -72,6 +72,8 @@
                 </div>
               </div>
               <!---->
+              <form method="post">
+                {% csrf_token %}
               <div class="login-container text-center">
                 <div class="input-box">
                   <input
@@ -102,6 +104,7 @@
                   >
                     로그인
                   </button>
+                  
                   <button
                     type="submit"
                     value="회원가입"
@@ -112,6 +115,7 @@
                   </button>
                 </div>
               </div>
+            </form>
               <div class="voice_json">
                 <!-- scss-->
                 <svg
