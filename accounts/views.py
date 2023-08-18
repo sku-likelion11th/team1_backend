@@ -54,7 +54,7 @@ def create_post(request, username):
         post.created_at = datetime.now()
         post.user = user
         post.save()
-        return redirect('/myplayer/')
+        return redirect('myplayer_view', username=username)
     return render(request, "accounts/writing.html", {'user': user.username})
 
 @login_required  # 로그인 상태를 확인하는 데코레이터

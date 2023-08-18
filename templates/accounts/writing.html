@@ -54,24 +54,25 @@
               <div class="tape-box">
                 <img src="{% static 'source/img/filmstripe.png' %}" class="filmstripe-top" />
                 <div class="input-text text-start">
+                  <form method="post">
+                    {%csrf_token %}
                   <div class="title">
                     <p>제목</p>
-                    <form>
                       <input type="text" name="title" />
-                    </form>
                   </div>
                   <div class="textarea mt-3">
                     <p>내용</p>
-                    <form>
+                    
                       <textarea name="content"></textarea>
-                    </form>
+                    
                   </div>
 
                   <div class="bttn d-flex">
-                    <button class="tapeChange">테이프 변경</button>
-                    <button class="musicChange">음악 선택</button>
-                    <form><button id="send">전송</button></form>
+                    <!-- <button class="tapeChange">테이프 변경</button>
+                    <button class="musicChange">음악 선택</button> -->
+                    <button id="post" type="submit">전송</button>
                   </div>
+                </form>
                 </div>
                 <img
                   src="{% static 'source/img/filmstripe.png' %}"
