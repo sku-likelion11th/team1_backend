@@ -37,7 +37,7 @@ class UserManager(BaseUserManager):
 
         return self.user
 
-    def create_superuser(self, username, password):
+    def create_superuser(self, username, password, nickname):
         # UserManager 클래서에서 슈퍼유저를 생성
 
         user = self.create_user(
@@ -45,6 +45,7 @@ class UserManager(BaseUserManager):
             # staff, admin을 True를 주면서 슈퍼유저를 생성
             username,
             password,
+            nickname,
             staff=True,
             admin=True,
         )
@@ -80,7 +81,7 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = "username"
     # USERNAME_FIELD 속성은 사용자 이름으로 사용할 필드를 지정합니다. 여기에서는 username를 사용자 이름으로 설정
 
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['nickname']
     # 사용자 객체를 생성할 때 필수로 입력해야하는 필드
 
     objects = UserManager()
