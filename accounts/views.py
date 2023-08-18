@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib import messages
@@ -61,8 +62,11 @@ def myplayer_view(request, username):
     login_user = request.user  # 현재 로그인된 사용자 정보를 가져옵니다.
     user = get_object_or_404(get_user_model(), username=username)
     posts = Post.objects.filter(user=user)
+    random_number = random.randint(0, 4) 
+    context = {'random_number': random_number}
 
     if user == login_user:
-        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts})
+        return render(request, "accounts/myPlayer.html", {"user": user, "posts": posts, "context": context})
     
     return render(request, "accounts/nonePlayer.html", {"user": user, "posts": posts})
+    
