@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -12,9 +11,27 @@
     />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
     <title>MYMY</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./source/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./source/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./source/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./source/favicon_io/site.webmanifest" />
   </head>
   <body>
     <div class="bookcover">
@@ -28,7 +45,7 @@
               </div>
               <div class="heart_json">
                 <lottie-player
-                  src="{% static 'js/json/animation_heart.json' %}"
+                  src="./js/json/animation_heart.json"
                   background="transparent"
                   speed="0.6"
                   loop
@@ -36,12 +53,8 @@
                 ></lottie-player>
               </div>
             </div>
-            <form method="POST">
-              {% csrf_token %} 
-              {{ form.as_p }}
-              <input type="submit" value="회원가입" />
-            </form>
-            <!-- <form action="" method="POST">
+
+            <form action="" method="POST">
               <div class="input-box">
                 <input
                   id="nickname"
@@ -72,7 +85,7 @@
               </div>
 
               <input type="submit" value="회원가입" />
-            </form> -->
+            </form>
           </section>
         </div>
       </div>
