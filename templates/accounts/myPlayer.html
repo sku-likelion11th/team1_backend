@@ -128,8 +128,8 @@
               </div>
             </div>
 
+            {% for tape_number in tape_numbers %}
             <div class="list">
-              {% for tape_number in tape_numbers %}
               <!--item-->
               <div class="item">
                   <div class="img">
@@ -139,8 +139,8 @@
                   </div>
                   <div class="content"></div>
               </div>
-              {% endfor %}
-          </div>
+            </div>
+            {% endfor %}
           <ul class="listPage">
               {% for page_number in page_numbers %}
               <li{% if page_number == current_page %} class="active"{% endif %}>{{ page_number }}</li>
